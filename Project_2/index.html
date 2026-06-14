@@ -27,6 +27,11 @@
         .finding-a { font-size: 0.88rem; color: #c0c0d8; line-height: 1.6; }
         .notebook-btn { display: inline-flex; align-items: center; gap: 8px; background: #534AB7; color: #e8e8f0; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: background 0.2s; }
         .notebook-btn:hover { background: #6056cc; }
+
+        .charts { display: flex; flex-direction: column; gap: 24px; margin-bottom: 56px; }
+        .chart-item { background: #13131f; border: 1px solid #1e1e2e; border-radius: 12px; overflow: hidden; }
+        .chart-item img { width: 100%; display: block; }
+        .chart-caption { padding: 12px 16px; font-size: 0.8rem; color: #666677; border-top: 1px solid #1e1e2e; }
         footer { border-top: 1px solid #1e1e2e; padding: 24px 40px; text-align: center; font-size: 0.8rem; color: #444455; }
     </style>
 </head>
@@ -73,8 +78,33 @@
             </div>
         </div>
 
+
+        <div class="section-label">Visualizations</div>
+        <div class="charts">
+            <div class="chart-item">
+                <img src="chart1_gender.png" alt="Annual suicide gun deaths by gender (2012–2014)">
+                <div class="chart-caption">Annual suicide gun deaths by gender (2012–2014)</div>
+            </div>
+            <div class="chart-item">
+                <img src="chart2_race.png" alt="Gun death rate by race per 100,000 people">
+                <div class="chart-caption">Gun death rate by race per 100,000 people</div>
+            </div>
+            <div class="chart-item">
+                <img src="chart3_cause.png" alt="Annual gun deaths by cause">
+                <div class="chart-caption">Annual gun deaths by cause</div>
+            </div>
+            <div class="chart-item">
+                <img src="chart4_cause_pct.png" alt="Percentage of gun deaths by cause per 100,000">
+                <div class="chart-caption">Percentage of gun deaths by cause per 100,000</div>
+            </div>
+            <div class="chart-item">
+                <img src="chart5_year.png" alt="Percentage of gun deaths by year per 100,000">
+                <div class="chart-caption">Percentage of gun deaths by year per 100,000</div>
+            </div>
+        </div>
+
         <div class="section-label">Notebook</div>
-        <a href="Project_2.ipynb" class="notebook-btn">View Notebook →</a>
+        <a href="https://github.com/saalssall/Data_Visualization_Projects/blob/main/Project_2/Project_2.ipynb" class="notebook-btn">View Notebook →</a>
     </main>
 
     <footer>&copy; 2026 saalssall</footer>
