@@ -6,34 +6,29 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-hint:
+  validate-hint:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Verify project structure
-        run: |
-          echo "Checking repo structure..."
-          ls -R
+      - name: Show repo structure (debug)
+        run: ls -R
 
-      - name: Validate hint.html exists
+      - name: Check hint.html inside workflows folder
         run: |
-          if [ -f "hint.html" ]; then
-            echo "hint.html found ✔"
+          FILE=".github/workflows/hint.html"
+
+          if [ -f "$FILE" ]; then
+            echo "hint.html found inside .github/workflows"
           else
-            echo "hint.html missing"
+            echo "hint.html missing at $FILE"
             exit 1
           fi
 
-      - name: Basic HTML sanity check
+      - name: Validate HTML structure
         run: |
-          echo "Checking for basic HTML tags..."
-          grep -q "<html" hint.html
-          grep -q "</html>" hint.html
-          echo "HTML structure looks OK ✔"
-
-      - name: Report success
-        run: |
-          echo "Hint page workflow completed successfully"
+          grep -q "<html" .github/workflows/hint.html
+          grep -q "</html>" .github/workflows/hint.html
+          echo "HTML structure OK"
