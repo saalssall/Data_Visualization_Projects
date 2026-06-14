@@ -56,7 +56,7 @@
     }
 
     main {
-        max-width: 1100px;
+        max-width: 960px;
         margin: 0 auto;
         padding: 60px 40px;
     }
@@ -70,18 +70,12 @@
         margin-bottom: 20px;
     }
 
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 16px;
-        margin-bottom: 40px;
-    }
-
     .card {
         background: #13131f;
         border: 1px solid #1e1e2e;
         border-radius: 12px;
-        padding: 20px;
+        padding: 24px;
+        margin-bottom: 16px;
         transition: border-color 0.2s, background 0.2s;
     }
 
@@ -92,8 +86,20 @@
 
     .card h3 {
         font-size: 1rem;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         color: #e8e8f0;
+    }
+
+    .card p {
+        font-size: 0.9rem;
+        color: #888899;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin-bottom: 40px;
     }
 
     canvas {
@@ -133,7 +139,17 @@
 
 <main>
 
-    <div class="section-label">Visual Insights</div>
+    <div class="section-label">Overview</div>
+
+    <div class="card">
+        <h3>Introduction</h3>
+        <p>
+            This project visualizes structured dataset trends using client-side JavaScript,
+            focusing on aggregation and interpretation of real-world data.
+        </p>
+    </div>
+
+    <div class="section-label">Key Findings</div>
 
     <div class="grid">
         <div class="card">
@@ -150,6 +166,15 @@
             <h3>Deaths by Sex</h3>
             <canvas id="sexChart"></canvas>
         </div>
+    </div>
+
+    <div class="section-label">Conclusion</div>
+
+    <div class="card">
+        <p>
+            Data visualization helps reveal patterns that are not obvious in raw datasets,
+            supporting better interpretation and decision-making.
+        </p>
     </div>
 
     <a class="back" href="../index.html">← Back to Projects</a>
@@ -172,7 +197,6 @@ function loadCSV() {
 }
 
 function processData(data) {
-
     const yearCount = {};
     const monthCount = {};
     const sexCount = {};
