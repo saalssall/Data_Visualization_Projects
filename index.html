@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>saalssall — Data Visualization Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #0f0f13;
+            color: #e8e8f0;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: #0f0f13;
+            border-bottom: 1px solid #1e1e2e;
+            padding: 72px 40px 60px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #1e1e2e;
+            border: 2px solid #534AB7;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 600;
+            color: #AFA9EC;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #f0f0fa;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #888899;
+            max-width: 420px;
+            margin: 0 auto 24px;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .badge {
+            background: #1a1a28;
+            border: 1px solid #2a2a3e;
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 0.78rem;
+            color: #AFA9EC;
+            font-weight: 500;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .section-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #534AB7;
+            margin-bottom: 20px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+            margin-bottom: 64px;
+        }
+
+        .project-card {
+            background: #13131f;
+            border: 1px solid #1e1e2e;
+            border-radius: 12px;
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: border-color 0.2s, background 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: #534AB7;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .project-card:hover {
+            border-color: #534AB7;
+            background: #16162a;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-num {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #534AB7;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #e8e8f0;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .project-desc {
+            font-size: 0.83rem;
+            color: #666677;
+            line-height: 1.55;
+        }
+
+        .project-arrow {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: #2a2a3e;
+            transition: color 0.2s;
+        }
+
+        .project-card:hover .project-arrow {
+            color: #534AB7;
+        }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #1e1e2e;
+            margin-bottom: 48px;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 64px;
+        }
+
+        @media (max-width: 620px) {
+            .two-col { grid-template-columns: 1fr; gap: 40px; }
+            main { padding: 40px 20px; }
+            .hero { padding: 48px 20px 40px; }
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-pill {
+            background: #1a1a28;
+            border: 1px solid #2a2a3e;
+            border-radius: 6px;
+            padding: 5px 12px;
+            font-size: 0.8rem;
+            color: #9999bb;
+            font-weight: 500;
+        }
+
+        .steps {
+            list-style: none;
+            counter-reset: steps;
+        }
+
+        .steps li {
+            counter-increment: steps;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            margin-bottom: 14px;
+            font-size: 0.88rem;
+            color: #888899;
+        }
+
+        .steps li::before {
+            content: counter(steps);
+            background: #1a1a28;
+            border: 1px solid #2a2a3e;
+            color: #AFA9EC;
+            font-size: 0.75rem;
+            font-weight: 600;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            background: #534AB7;
+            color: #e8e8f0;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .github-btn:hover {
+            background: #6056cc;
+        }
+
+        footer {
+            border-top: 1px solid #1e1e2e;
+            padding: 24px 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #444455;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <div class="avatar">sa</div>
+        <h1>saalssall</h1>
+        <p>Data visualization projects exploring real-world datasets with Python and Jupyter Notebooks</p>
+        <div class="hero-badges">
+            <span class="badge">Python</span>
+            <span class="badge">Jupyter Notebook</span>
+            <span class="badge">Pandas</span>
+            <span class="badge">Matplotlib</span>
+            <span class="badge">Seaborn</span>
+        </div>
+    </div>
+
+    <main>
+
+        <div class="section-label">Projects</div>
+        <div class="projects-grid">
+            <a href="Project_1/" class="project-card">
+                <div class="project-num">Project 01</div>
+                <div class="project-title">Gun Deaths in the US (2012–2014)</div>
+                <div class="project-desc">Exploratory analysis of gun death statistics by gender, race, and cause.</div>
+                <span class="project-arrow">→</span>
+            </a>
+            <a href="Project_2/" class="project-card">
+                <div class="project-num">Project 02</div>
+                <div class="project-title">Gun Deaths — Visualized</div>
+                <div class="project-desc">Bar chart visualizations of gun deaths by gender, race, and cause using Matplotlib.</div>
+                <span class="project-arrow">→</span>
+            </a>
+            <a href="Project_3/" class="project-card">
+                <div class="project-num">Project 03</div>
+                <div class="project-title">Food Centre Orders</div>
+                <div class="project-desc">Visualization of food orders by category, cuisine, and pricing across centre types.</div>
+                <span class="project-arrow">→</span>
+            </a>
+            <a href="Project_4/" class="project-card">
+                <div class="project-num">Project 04</div>
+                <div class="project-title">Healthcare Data Analysis</div>
+                <div class="project-desc">Stroke and heart disease patterns by gender, smoking status, and BMI.</div>
+                <span class="project-arrow">→</span>
+            </a>
+        </div>
+
+        <hr class="divider">
+
+        <div class="two-col">
+            <div>
+                <div class="section-label">Technologies</div>
+                <div class="tech-list">
+                    <span class="tech-pill">Jupyter Notebook</span>
+                    <span class="tech-pill">Python 3</span>
+                    <span class="tech-pill">Pandas</span>
+                    <span class="tech-pill">NumPy</span>
+                    <span class="tech-pill">Matplotlib</span>
+                    <span class="tech-pill">Seaborn</span>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-label">Getting started</div>
+                <ol class="steps">
+                    <li>Clone this repository</li>
+                    <li>Install Python, Jupyter, pandas, matplotlib, seaborn</li>
+                    <li>Open the <code>.ipynb</code> files in Jupyter or VS Code</li>
+                    <li>Run the cells to see the visualizations</li>
+                </ol>
+                <a href="https://github.com/saalssall/Data_Visualization_Projects" class="github-btn">
+                    View on GitHub →
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        &copy; 2026 saalssall
+    </footer>
+
+</body>
+</html>
