@@ -5,47 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project 1 — Gun Deaths in the US</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #0f0f13;
+            color: #e8e8f0;
+            min-height: 100vh;
             line-height: 1.6;
-            background-color: #f4f4f4;
-            color: #333;
         }
 
         header {
-            background: #222;
-            color: #fff;
-            padding: 20px 0;
+            padding: 72px 40px 40px;
             text-align: center;
+            border-bottom: 1px solid #1e1e2e;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #1a1a28;
+            border: 1px solid #2a2a3e;
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 0.78rem;
+            color: #AFA9EC;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #f0f0fa;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #888899;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         main {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-            background: white;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 60px 40px;
         }
 
-        h1, h2 {
-            color: #222;
+        .section-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #534AB7;
+            margin-bottom: 20px;
         }
 
         .card {
-            background: #fafafa;
-            padding: 15px;
-            margin: 15px 0;
-            border-left: 5px solid #c0392b;
+            background: #13131f;
+            border: 1px solid #1e1e2e;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .card:hover {
+            border-color: #534AB7;
+            background: #16162a;
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #e8e8f0;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #888899;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
         }
 
         footer {
+            border-top: 1px solid #1e1e2e;
+            padding: 24px 40px;
             text-align: center;
-            padding: 15px;
+            font-size: 0.8rem;
+            color: #444455;
+        }
+
+        a.back {
+            display: inline-block;
             margin-top: 20px;
-            background: #222;
-            color: white;
+            color: #AFA9EC;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        a.back:hover {
+            color: #534AB7;
         }
     </style>
 </head>
@@ -53,51 +124,55 @@
 <body>
 
 <header>
+    <div class="badge">Project 01</div>
     <h1>Gun Deaths in the United States</h1>
-    <p>Project 1 — Data Overview</p>
+    <p>Exploratory analysis of gun-related deaths, focusing on trends, causes, and affected demographics.</p>
 </header>
 
 <main>
 
-    <section>
-        <h2>Introduction</h2>
+    <div class="section-label">Overview</div>
+    <div class="card">
+        <h3>Introduction</h3>
         <p>
-            This project explores gun-related deaths in the United States.
-            The goal is to understand patterns, causes, and trends using publicly available data.
+            This project explores gun-related deaths in the United States using publicly available datasets.
+            The goal is to identify patterns and understand the scale of the issue.
         </p>
-    </section>
+    </div>
 
-    <section>
-        <h2>Key Findings</h2>
+    <div class="section-label">Key Findings</div>
 
+    <div class="grid">
         <div class="card">
             <h3>Overall Trend</h3>
-            <p>Gun deaths have remained a significant public health issue over time.</p>
+            <p>Gun deaths remain a persistent public health issue across the years.</p>
         </div>
 
         <div class="card">
-            <h3>Common Causes</h3>
-            <p>Includes homicide, suicide, and accidental shootings.</p>
+            <h3>Main Causes</h3>
+            <p>Most cases involve homicide, suicide, and accidental shootings.</p>
         </div>
 
         <div class="card">
-            <h3>Affected Groups</h3>
-            <p>Different age groups and demographics are affected differently.</p>
+            <h3>Demographics</h3>
+            <p>Different age groups and populations are affected in different ways.</p>
         </div>
-    </section>
+    </div>
 
-    <section>
-        <h2>Conclusion</h2>
+    <div class="section-label">Conclusion</div>
+    <div class="card">
         <p>
-            Understanding these patterns can help inform policy, prevention strategies,
-            and public awareness efforts.
+            Understanding these patterns can help guide prevention strategies,
+            policy decisions, and public awareness efforts.
         </p>
-    </section>
+    </div>
+
+    <a class="back" href="../index.html">← Back to Projects</a>
 
 </main>
 
 <footer>
-    <p>© 2026 Project 1 — Data Analysis</p>
+    &copy; 2026 Data Visualization Project
 </footer>
 
 </body>
