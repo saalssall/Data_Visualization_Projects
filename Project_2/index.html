@@ -1,251 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project 2 — Data Dashboard</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-
-<style>
-    *, *::before, *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Inter', 'Segoe UI', sans-serif;
-        background: #0f0f13;
-        color: #e8e8f0;
-        min-height: 100vh;
-        line-height: 1.6;
-    }
-
-    header {
-        padding: 72px 40px 40px;
-        text-align: center;
-        border-bottom: 1px solid #1e1e2e;
-    }
-
-    .badge {
-        display: inline-block;
-        background: #1a1a28;
-        border: 1px solid #2a2a3e;
-        border-radius: 20px;
-        padding: 4px 14px;
-        font-size: 0.78rem;
-        color: #AFA9EC;
-        margin-bottom: 16px;
-    }
-
-    h1 {
-        font-size: 2rem;
-        font-weight: 600;
-        color: #f0f0fa;
-        margin-bottom: 10px;
-    }
-
-    header p {
-        color: #888899;
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
-    main {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 60px 40px;
-    }
-
-    .section-label {
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: #534AB7;
-        margin-bottom: 20px;
-    }
-
-    .card {
-        background: #13131f;
-        border: 1px solid #1e1e2e;
-        border-radius: 12px;
-        padding: 24px;
-        margin-bottom: 16px;
-        transition: border-color 0.2s, background 0.2s;
-    }
-
-    .card:hover {
-        border-color: #534AB7;
-        background: #16162a;
-    }
-
-    .card h3 {
-        font-size: 1rem;
-        margin-bottom: 8px;
-        color: #e8e8f0;
-    }
-
-    .card p {
-        font-size: 0.9rem;
-        color: #888899;
-    }
-
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 16px;
-        margin-bottom: 40px;
-    }
-
-    canvas {
-        width: 100% !important;
-        height: 260px !important;
-    }
-
-    footer {
-        border-top: 1px solid #1e1e2e;
-        padding: 24px 40px;
-        text-align: center;
-        font-size: 0.8rem;
-        color: #444455;
-    }
-
-    a.back {
-        display: inline-block;
-        margin-top: 20px;
-        color: #AFA9EC;
-        text-decoration: none;
-        font-size: 0.85rem;
-    }
-
-    a.back:hover {
-        color: #534AB7;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 2 — Gun Deaths Visualized</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', 'Segoe UI', sans-serif; background: #0f0f13; color: #e8e8f0; min-height: 100vh; line-height: 1.6; }
+        nav { padding: 20px 40px; border-bottom: 1px solid #1e1e2e; }
+        nav a { color: #888899; text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+        nav a:hover { color: #AFA9EC; }
+        nav a span { color: #534AB7; }
+        .hero { padding: 60px 40px 48px; max-width: 800px; margin: 0 auto; }
+        .project-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #534AB7; margin-bottom: 16px; }
+        h1 { font-size: 1.8rem; font-weight: 600; color: #f0f0fa; letter-spacing: -0.5px; margin-bottom: 16px; line-height: 1.3; }
+        .meta { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 32px; }
+        .meta-item { font-size: 0.82rem; color: #666677; }
+        .meta-item strong { color: #9999bb; font-weight: 500; }
+        .description { font-size: 0.95rem; color: #9999bb; max-width: 640px; margin-bottom: 48px; line-height: 1.75; }
+        main { max-width: 800px; margin: 0 auto; padding: 0 40px 80px; }
+        .section-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #534AB7; margin-bottom: 20px; }
+        .findings { display: flex; flex-direction: column; gap: 12px; margin-bottom: 56px; }
+        .finding { background: #13131f; border: 1px solid #1e1e2e; border-left: 3px solid #534AB7; border-radius: 0 8px 8px 0; padding: 16px 20px; }
+        .finding-q { font-size: 0.78rem; color: #534AB7; font-weight: 600; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .finding-a { font-size: 0.88rem; color: #c0c0d8; line-height: 1.6; }
+        .notebook-btn { display: inline-flex; align-items: center; gap: 8px; background: #534AB7; color: #e8e8f0; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: background 0.2s; }
+        .notebook-btn:hover { background: #6056cc; }
+        footer { border-top: 1px solid #1e1e2e; padding: 24px 40px; text-align: center; font-size: 0.8rem; color: #444455; }
+    </style>
 </head>
-
 <body>
+    <nav><a href="../">← <span>saalssall</span> / Projects</a></nav>
 
-<header>
-    <div class="badge">Project 02</div>
-    <h1>Interactive Data Dashboard</h1>
-    <p>Visual analysis of dataset trends using JavaScript, Chart.js, and CSV processing.</p>
-</header>
-
-<main>
-
-    <div class="section-label">Overview</div>
-
-    <div class="card">
-        <h3>Introduction</h3>
-        <p>
-            This project visualizes structured dataset trends using client-side JavaScript,
-            focusing on aggregation and interpretation of real-world data.
+    <div class="hero">
+        <div class="project-label">Project 02</div>
+        <h1>Gun Deaths in the US — Visualized</h1>
+        <div class="meta">
+            <div class="meta-item"><strong>Dataset</strong> — death_data.csv</div>
+            <div class="meta-item"><strong>Tools</strong> — Python, Pandas, Matplotlib</div>
+            <div class="meta-item"><strong>Type</strong> — Data Visualization</div>
+        </div>
+        <p class="description">
+            A visualization-focused extension of the gun deaths dataset, producing bar charts
+            across five key questions. Null values were cleaned prior to analysis.
+            Charts include annotated percentages for clarity.
         </p>
     </div>
 
-    <div class="section-label">Key Findings</div>
-
-    <div class="grid">
-        <div class="card">
-            <h3>Deaths by Year</h3>
-            <canvas id="yearChart"></canvas>
+    <main>
+        <div class="section-label">Key Findings</div>
+        <div class="findings">
+            <div class="finding">
+                <div class="finding-q">Gender &amp; suicide</div>
+                <div class="finding-a">Males had a consistently higher gun suicide rate than females across 2012–2014, with little change year over year.</div>
+            </div>
+            <div class="finding">
+                <div class="finding-q">Race</div>
+                <div class="finding-a">White Americans represented 64.5% of gun deaths per 100,000 — the most vulnerable group. Bar chart clearly shows the disparity across racial groups.</div>
+            </div>
+            <div class="finding">
+                <div class="finding-q">Cause of death</div>
+                <div class="finding-a">Suicide was the leading cause of gun deaths, far exceeding homicide and other intents.</div>
+            </div>
+            <div class="finding">
+                <div class="finding-q">Cause percentage</div>
+                <div class="finding-a">Suicide accounted for 62.3% of gun deaths per 100,000 people — the highest of all causes, confirmed by annotated bar chart.</div>
+            </div>
+            <div class="finding">
+                <div class="finding-q">Annual trend</div>
+                <div class="finding-a">Substantial change in the percentage of gun deaths was observed across the three-year period, visible in the year-by-year bar chart.</div>
+            </div>
         </div>
 
-        <div class="card">
-            <h3>Deaths by Month</h3>
-            <canvas id="monthChart"></canvas>
-        </div>
+        <div class="section-label">Notebook</div>
+        <a href="Project_2.ipynb" class="notebook-btn">View Notebook →</a>
+    </main>
 
-        <div class="card">
-            <h3>Deaths by Sex</h3>
-            <canvas id="sexChart"></canvas>
-        </div>
-    </div>
-
-    <div class="section-label">Conclusion</div>
-
-    <div class="card">
-        <p>
-            Data visualization helps reveal patterns that are not obvious in raw datasets,
-            supporting better interpretation and decision-making.
-        </p>
-    </div>
-
-    <a class="back" href="../index.html">← Back to Projects</a>
-
-</main>
-
-<footer>
-    &copy; 2026 Data Visualization Project
-</footer>
-
-<script>
-function loadCSV() {
-    Papa.parse("Data/death_data.csv", {
-        download: true,
-        header: true,
-        complete: function(results) {
-            processData(results.data);
-        }
-    });
-}
-
-function processData(data) {
-    const yearCount = {};
-    const monthCount = {};
-    const sexCount = {};
-
-    data.forEach(row => {
-        const year = row.year || row.Year;
-        const month = row.month || row.Month;
-        const sex = row.sex || row.Sex;
-
-        if (year) yearCount[year] = (yearCount[year] || 0) + 1;
-        if (month) monthCount[month] = (monthCount[month] || 0) + 1;
-        if (sex) sexCount[sex] = (sexCount[sex] || 0) + 1;
-    });
-
-    createChart("yearChart", "bar", yearCount);
-    createChart("monthChart", "bar", monthCount);
-    createChart("sexChart", "pie", sexCount);
-}
-
-function createChart(id, type, dataObj) {
-    const ctx = document.getElementById(id).getContext("2d");
-
-    new Chart(ctx, {
-        type: type,
-        data: {
-            labels: Object.keys(dataObj),
-            datasets: [{
-                data: Object.values(dataObj),
-                backgroundColor: [
-                    "#534AB7", "#7A6FF0", "#9B8CFF",
-                    "#3E3E55", "#6C63FF", "#AFA9EC"
-                ]
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    labels: {
-                        color: "#e8e8f0"
-                    }
-                }
-            }
-        }
-    });
-}
-
-loadCSV();
-</script>
-
+    <footer>&copy; 2026 saalssall</footer>
 </body>
 </html>

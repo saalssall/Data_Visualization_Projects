@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1 — Gun Deaths in the US</title>
+    <title>Project 3 — Food Centre Orders</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,17 +34,17 @@
     <nav><a href="../">← <span>saalssall</span> / Projects</a></nav>
 
     <div class="hero">
-        <div class="project-label">Project 01</div>
-        <h1>Gun Deaths in the US (2012–2014)</h1>
+        <div class="project-label">Project 03</div>
+        <h1>Food Centre Orders Analysis</h1>
         <div class="meta">
-            <div class="meta-item"><strong>Dataset</strong> — death_data.csv</div>
-            <div class="meta-item"><strong>Tools</strong> — Python, Pandas, NumPy</div>
-            <div class="meta-item"><strong>Type</strong> — Exploratory Analysis</div>
+            <div class="meta-item"><strong>Dataset</strong> — food_center.csv</div>
+            <div class="meta-item"><strong>Tools</strong> — Python, Pandas, Matplotlib</div>
+            <div class="meta-item"><strong>Type</strong> — Data Visualization</div>
         </div>
         <p class="description">
-            An exploratory analysis of gun-related deaths in the United States between 2012 and 2014.
-            The dataset was examined across multiple dimensions including gender, race, and cause of death
-            to identify patterns and distributions within the data.
+            An analysis of food centre order data exploring which categories, cuisines, and centre types
+            drive the most orders. Visualizations include bar charts and grouped comparisons across
+            checkout price, base price, and order volume.
         </p>
     </div>
 
@@ -52,25 +52,29 @@
         <div class="section-label">Key Findings</div>
         <div class="findings">
             <div class="finding">
-                <div class="finding-q">Gender</div>
-                <div class="finding-a">Males are significantly more likely to die by gun suicide than females, a pattern that remained consistent across all three years.</div>
+                <div class="finding-q">Top category by checkout price</div>
+                <div class="finding-a">Beverages were the most ordered category when ranked by checkout price — people spent more on beverages than any other food category.</div>
             </div>
             <div class="finding">
-                <div class="finding-q">Race</div>
-                <div class="finding-a">White Americans accounted for approximately 66% of gun deaths per 100,000 people — the highest of any racial group. Native Americans had the lowest rate at around 0.9%.</div>
+                <div class="finding-q">Cuisine by centre type</div>
+                <div class="finding-a">Type A centres had the highest visitor count across all cuisines. Italian food at Type A centres recorded the highest order frequency of all combinations.</div>
             </div>
             <div class="finding">
-                <div class="finding-q">Cause of death</div>
-                <div class="finding-a">Suicide was the most common cause of gun deaths, accounting for the majority of incidents across all three years.</div>
+                <div class="finding-q">Top category by base price</div>
+                <div class="finding-a">Beverages also led when ranked by base price, confirming their dominance across both pricing metrics.</div>
             </div>
             <div class="finding">
-                <div class="finding-q">Annual trend</div>
-                <div class="finding-a">The percentage of gun deaths per 100,000 people showed notable change between 2012 and 2014, indicating a shifting trend over this period.</div>
+                <div class="finding-q">Top category by order volume</div>
+                <div class="finding-a">Rice Bowl had the highest number of orders by category, making it the most popular individual food item.</div>
+            </div>
+            <div class="finding">
+                <div class="finding-q">Top cuisine overall</div>
+                <div class="finding-a">Italian food recorded the highest total number of orders across all cuisines in the dataset.</div>
             </div>
         </div>
 
         <div class="section-label">Notebook</div>
-        <a href="Project_1.ipynb" class="notebook-btn">View Notebook →</a>
+        <a href="Project_3.ipynb" class="notebook-btn">View Notebook →</a>
     </main>
 
     <footer>&copy; 2026 saalssall</footer>

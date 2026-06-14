@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1 — Gun Deaths in the US</title>
+    <title>Project 4 — Healthcare Data Analysis</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,17 +34,17 @@
     <nav><a href="../">← <span>saalssall</span> / Projects</a></nav>
 
     <div class="hero">
-        <div class="project-label">Project 01</div>
-        <h1>Gun Deaths in the US (2012–2014)</h1>
+        <div class="project-label">Project 04</div>
+        <h1>Healthcare Data Analysis</h1>
         <div class="meta">
-            <div class="meta-item"><strong>Dataset</strong> — death_data.csv</div>
-            <div class="meta-item"><strong>Tools</strong> — Python, Pandas, NumPy</div>
-            <div class="meta-item"><strong>Type</strong> — Exploratory Analysis</div>
+            <div class="meta-item"><strong>Dataset</strong> — HealthCareData.csv (4,909 rows)</div>
+            <div class="meta-item"><strong>Tools</strong> — Python, Pandas, Matplotlib</div>
+            <div class="meta-item"><strong>Type</strong> — Data Visualization</div>
         </div>
         <p class="description">
-            An exploratory analysis of gun-related deaths in the United States between 2012 and 2014.
-            The dataset was examined across multiple dimensions including gender, race, and cause of death
-            to identify patterns and distributions within the data.
+            A comprehensive analysis of a healthcare dataset examining the relationships between
+            stroke, heart disease, BMI, glucose levels, smoking status, gender, and work type.
+            The dataset contains 4,909 records across 12 columns, cleaned of all null values before analysis.
         </p>
     </div>
 
@@ -52,25 +52,37 @@
         <div class="section-label">Key Findings</div>
         <div class="findings">
             <div class="finding">
-                <div class="finding-q">Gender</div>
-                <div class="finding-a">Males are significantly more likely to die by gun suicide than females, a pattern that remained consistent across all three years.</div>
+                <div class="finding-q">Heart disease &amp; gender</div>
+                <div class="finding-a">130 married men experienced heart disease. Men were more likely than women to have both heart disease and a stroke simultaneously.</div>
             </div>
             <div class="finding">
-                <div class="finding-q">Race</div>
-                <div class="finding-a">White Americans accounted for approximately 66% of gun deaths per 100,000 people — the highest of any racial group. Native Americans had the lowest rate at around 0.9%.</div>
+                <div class="finding-q">Stroke &amp; smoking</div>
+                <div class="finding-a">59 female participants experienced stroke despite never having smoked, highlighting that smoking is not the only risk factor.</div>
             </div>
             <div class="finding">
-                <div class="finding-q">Cause of death</div>
-                <div class="finding-a">Suicide was the most common cause of gun deaths, accounting for the majority of incidents across all three years.</div>
+                <div class="finding-q">BMI &amp; smoking status</div>
+                <div class="finding-a">People who had never smoked had the highest BMI rate. People who currently smoke had the lowest BMI rate.</div>
             </div>
             <div class="finding">
-                <div class="finding-q">Annual trend</div>
-                <div class="finding-a">The percentage of gun deaths per 100,000 people showed notable change between 2012 and 2014, indicating a shifting trend over this period.</div>
+                <div class="finding-q">Work type</div>
+                <div class="finding-a">Private sector workers had the highest percentage of heart illness. People who had never worked had the least. Self-employed individuals were most likely to develop heart disease.</div>
+            </div>
+            <div class="finding">
+                <div class="finding-q">Glucose levels</div>
+                <div class="finding-a">Private workers had the highest average glucose level by work type. Private workers who never smoked recorded the highest glucose levels overall; children who smoke had the lowest.</div>
+            </div>
+            <div class="finding">
+                <div class="finding-q">BMI &amp; heart disease</div>
+                <div class="finding-a">Higher BMI is associated with a greater likelihood of heart disease. Higher average glucose level is also linked to increased heart disease risk.</div>
+            </div>
+            <div class="finding">
+                <div class="finding-q">Former smokers</div>
+                <div class="finding-a">People who had formerly smoked were more likely to develop heart disease than current or never smokers.</div>
             </div>
         </div>
 
         <div class="section-label">Notebook</div>
-        <a href="Project_1.ipynb" class="notebook-btn">View Notebook →</a>
+        <a href="Project_4.ipynb" class="notebook-btn">View Notebook →</a>
     </main>
 
     <footer>&copy; 2026 saalssall</footer>
