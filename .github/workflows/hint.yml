@@ -1,0 +1,39 @@
+name: Hint Page Workflow
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build-hint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify project structure
+        run: |
+          echo "Checking repo structure..."
+          ls -R
+
+      - name: Validate hint.html exists
+        run: |
+          if [ -f "hint.html" ]; then
+            echo "hint.html found ✔"
+          else
+            echo "hint.html missing"
+            exit 1
+          fi
+
+      - name: Basic HTML sanity check
+        run: |
+          echo "Checking for basic HTML tags..."
+          grep -q "<html" hint.html
+          grep -q "</html>" hint.html
+          echo "HTML structure looks OK ✔"
+
+      - name: Report success
+        run: |
+          echo "Hint page workflow completed successfully"
